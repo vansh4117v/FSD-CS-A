@@ -10,10 +10,15 @@
       <h1>Event Handling in JavaScript</h1>
       <button id="myButton">Click Me!</button>
       <p id="displayText">Button not clicked yet.</p>
+      <div id="colors">
+        <div style="cursor: pointer">red</div>
+        <div style="cursor: pointer">yellow</div>
+        <div style="cursor: pointer">green</div>
+      </div>
 
       <script>
         let revertTimeoutId = null;
-        function handleButtonClick(){
+        function handleButtonClick() {
           const displayText = document.getElementById("displayText");
           const defaultText = "Button not clicked yet.";
           displayText.innerText = "Button was clicked!";
@@ -26,7 +31,16 @@
           }, 2000);
         }
 
+        function changeColors(e) {
+          if (e.target.style.background === e.target.innerHTML) {
+            e.target.style.background = "";
+          } else {
+            e.target.style.background = e.target.innerHTML;
+          }
+        }
+
         document.getElementById("myButton").addEventListener("click", handleButtonClick);
+        document.getElementById("colors").addEventListener("click", changeColors);
       </script>
     </div>
   </body>
