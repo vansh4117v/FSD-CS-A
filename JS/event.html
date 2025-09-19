@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <body>
+    <div>
+      <h1>Event Handling in JavaScript</h1>
+      <button id="myButton">Click Me!</button>
+      <p id="displayText">Button not clicked yet.</p>
+
+      <script>
+        let revertTimeoutId = null;
+        function handleButtonClick(){
+          const displayText = document.getElementById("displayText");
+          const defaultText = "Button not clicked yet.";
+          displayText.innerText = "Button was clicked!";
+          if (revertTimeoutId) {
+            clearTimeout(revertTimeoutId);
+          }
+          revertTimeoutId = setTimeout(function () {
+            displayText.innerText = defaultText;
+            revertTimeoutId = null;
+          }, 2000);
+        }
+
+        document.getElementById("myButton").addEventListener("click", handleButtonClick);
+      </script>
+    </div>
+  </body>
+</html>
